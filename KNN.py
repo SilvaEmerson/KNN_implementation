@@ -2,19 +2,6 @@
 
 import statistics as st
 
-def dist(a,b):
-	'''
-	Calcula a distância entre pontos multidimencionais
-	'''
-
-	result = 0
-
-	for i in range(len(a)):
-		result += (a[i] - n[i])**2
-
-	#return result**(1/2)
-	return result**0.5
-
 def predict(features_test, data_train, labels, k):
 	'''
 	features_test = dados de teste
@@ -45,3 +32,16 @@ def dist_calc(row, data_train, labels, k):
 	distances.sort()
 	result = max([distances[i][-1] for i in range(k)])
 	return st.mode(result)
+
+def dist(a,b):
+	'''
+	Calcula a distância entre pontos multidimencionais
+	'''
+
+	result = 0
+
+	for i in range(len(a)):
+		result += ((a[i] - n[i])**2)
+
+	#return result**(1/2)
+	return result**0.5
