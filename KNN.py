@@ -2,6 +2,7 @@
 
 import statistics as st
 
+
 def predict(features_test, data_train, labels, k):
 	'''
 	features_test = dados de teste
@@ -9,25 +10,22 @@ def predict(features_test, data_train, labels, k):
 	k = parâmetro k
 	'''
 
-	predictions = []
-
-	for row in features_test:
-		predictions.append(dist_calc(row))
+    #chama dist_calc para cada caso de teste
+	predictions = [dist_calc(row_test,data_train,labels,k) for row_test in features_test]
 
 	return predictions
 
-def dist_calc(row, data_train, labels, k):
+
+def dist_calc(row_test, data_train, labels, k):
 	'''
 	Calcula a distância entre os valores dos atributos da intância de teste
 	com todas as intâncias de treino e retorna a classe mais presente na entre
 	as distâncias 
 	'''
 
-	distances = []
-
-	for row_train in range(len(data_train)):
-			distances.append([dist(row,data_train[row_train]),
-				labels[row_train]])
+    #para o caso de teste chama dist com cada instância de treino
+	distances = [[dist(row_test, data_train[row_train]),
+				labels[row_train]] for row_train in range(len(data_train))]
 
 	distances.sort()
 	result = max([distances[i][-1] for i in range(k)])
@@ -40,8 +38,10 @@ def dist(a,b):
 
 	result = 0
 
+	#realiza somatório da variação dos atributos corespondentes
+	#dos caso de teste e treino 
 	for i in range(len(a)):
-		result += ((a[i] - n[i])**2)
+		result += ((a[i] - b[i])**2)
 
 	#return result**(1/2)
 	return result**0.5
