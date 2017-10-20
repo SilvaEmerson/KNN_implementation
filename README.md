@@ -2,3 +2,4 @@
 
 ### [Breast Cancer Winsconsin (Diagnostic) Data set](https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.data), from UCI - Machine Learning Repository 
 
+![alt text](images/head-map.png)
